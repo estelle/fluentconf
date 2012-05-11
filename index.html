@@ -7,7 +7,8 @@
     <title>JavaScript: You don't need a framework for that</title>    
 <link rel="stylesheet" href="fluentconf.css"/>
 <style>
-.mask{
+@media screen and (-webkit-min-device-pixel-ratio:0){
+.textmask{
 
 	background: 
 		-webkit-linear-gradient(left, rgba(0,0,0,0.2) 50%, transparent 50%),
@@ -16,16 +17,14 @@
 		-webkit-linear-gradient(left, transparent 50%, rgba(0,0,0,0.2) 50%),
 		-webkit-linear-gradient(left, transparent 40%, rgba(0,0,0,0.2) 40%),
 		-webkit-linear-gradient(left, transparent 60%, rgba(0,0,0,0.2) 60%),
-		-webkit-linear-gradient(left, transparent 50%, rgba(0,0,0,0.2) 50%),
-		-webkit-linear-gradient(left, transparent 40%, rgba(0,0,0,0.2) 40%),
-		-webkit-linear-gradient(left, transparent 60%, rgba(0,0,0,0.2) 60%),
 		-webkit-linear-gradient(left,
 		red 14%, orange 15%, orange 28%, yellow 29%, yellow 42%, green 43%, green 56%, blue 57%, blue 70%, magenta 71%, magenta 85%, purple 86%), white;
-	-webkit-background-size: 1px 50%, 1px 50px, 32px, 120px, 80px, 60px, 90px, 110px, 70px, 500px;
+	-webkit-background-size: 1px 50%, 1px 50px, 32px, 120px, 80px, 70px, 500px;
 	
--webkit-background-clip: text,text,text,text,text,text,text,text,text,text,text, border;
-color: transparent;
+-webkit-background-clip: text,text,text,text,text,text,text,text, border;
+color: rgba(0,0,0,0);
 	}
+}
 </style>
 </head> 
 
@@ -51,7 +50,7 @@ color: transparent;
    
     <div class="slide intro">
      <header><hgroup> 
-      <h1>You don't need <br>a <span class="mask">framework</span><br> for that</h1> 
+      <h1>You don't need <br>a <span class="textmask">framework</span><br> for that</h1> 
      </hgroup></header>
     </div> 
     
