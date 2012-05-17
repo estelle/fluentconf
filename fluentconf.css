@@ -199,6 +199,18 @@ position: absolute;
 bottom: 10px;
 width: 800px;
 }
+.slide textarea.mynotes {
+		-webkit-appearance: none;
+		border: 1px #aaa solid;
+		border-radius: 5px;
+		width: 100%;
+		font-size: 18px;
+		font-style: italic;
+		box-shadow: inset 0 0 8px rgba(0,0,0,0.3);
+		padding: 5px;
+		box-sizing: border-box;
+		font-family:"Palatino Linotype", "Book Antiqua", Palatino, cursive,serif;
+	 }
 #next, 
 #back {
 	z-index: 1000;
