@@ -1,6 +1,8 @@
 @charset "UTF-8";
 /* CSS Document */
-
+:root {
+	font-size: 62.5%;	
+}
 body {
 	font-size: 20px;
 	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif, 'Droid Sans';
@@ -177,11 +179,7 @@ margin-bottom: 10px;
 .slide img {
 	max-height: 90%;
 }
-.slide:nth-child(even) {
-}
-.slide:nth-child(odd) {
-}
-.slide p, .slide textarea {
+.slide p {
 font-size: 120%;
 }
 .slide .counter {
@@ -224,13 +222,7 @@ font-size: 120%;
 	display: block;
 	margin-left: 1500px;
 }
-body.three-d div.slides {
-	-webkit-transform: translateX(50px) scale(0.8) rotateY(10deg);
-	-moz-transform: translateX(50px) scale(0.8) rotateY(10deg);
-	-ms-transform: translateX(50px) scale(0.8) rotateY(10deg);
-	-o-transform: translateX(50px) scale(0.8) rotateY(10deg);
-	transform: translateX(50px) scale(0.8) rotateY(10deg);
-}
+
 section footer, .slide footer {
 font-size: 22px;
 margin: 20px 0 0 30px;
@@ -241,6 +233,28 @@ position: absolute;
 bottom: 10px;
 width: 800px;
 }
+#next, 
+#back {
+	z-index: 1000;
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	list-style-type: none;
+	-webkit-appearance: none;
+	color: #333;
+	font-size: 20px;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+	background: -webkit-linear-gradient(#fff 50%, #eee 50%, #ddd);
+	border-radius: 7px;
+	border: none;
+	padding: 5px 10px;
+	letter-spacing:1px;
+	font-size: 1.4rem;
+	box-shadow: inset 0 0 2px rgba(0,0,0,0.3),
+	  2px 2px 5px rgba(0,0,0,0.7);
+	border: 3px solid #eee;
+}
+#next {left: auto; right: 5px;}
 /* Content */
 
 header {
@@ -300,18 +314,6 @@ pre em {
 	color: #18a600;
 	text-shadow: #18a600 0 0 1px;
 }
-div.example {
-	display: block;
-	padding: 10px 20px;
-	background: rgba(255, 255, 255, 0.4);
-	border-radius: 8px;
-	margin-bottom: 10px;
-	border: 1px solid rgba(0, 0, 0, 0.2);
-}
-video {;
-	border-radius: 8px;
-	border: 1px solid rgba(0, 0, 0, 0.2);
-}
 #presentation-counter {
 	color: #ccc;
 	font-size: 70%;
@@ -321,24 +323,6 @@ video {;
 	left: 0;
 	width: 100%;
 	text-align: center;
-}
-div:not(.current).reduced {
-	-webkit-transform: scale(0.8);
-	-moz-transform: scale(0.8);
-	-ms-transform: scale(0.8);
-	-o-transform: scale(0.8);
-	transform: scale(0.8);
-}
-.no-transitions {
-	-webkit-transition: none;
-	-moz-transition: none;
-	-ms-transition: none;
-	-o-transition: none;
-	transition: none;
-}
-.no-gradients {
-	background: none;
-	background-color: #fff;
 }
     
 /* OBJECT PAGES */

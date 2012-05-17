@@ -305,13 +305,10 @@ SlideShow.prototype = {
  showNotes: function() {
     var isOn = this._notesOn = !this._notesOn;
     query('.notes').forEach(function(el) {
-      el.style.display = (notesOn) ? 'block' : 'none';
+      el.style.display = (isOn) ? '' : 'none';
     });
   },
 
-    switch3D: function() {
-    toggleClass(document.body, 'three-d');
-  },
 
     handleWheel: function(e) {
     var delta = 0;
@@ -334,7 +331,31 @@ SlideShow.prototype = {
 		  return;
 		}
     },
-
+	
+	addNotes: function(){
+		var ta = document.createElement('textarea'),
+		     currentSlide = document.querySelector('.current section'),
+			 path = window.location.pathname,
+			 A = path.lastIndexOf('/') + 1, 
+			 B = path.lastIndexOf('.'),
+			 firstPartOfKey, key;
+		if(B && B > A){	 
+		    firstPartOfKey = path.substring(A, B);
+		} else {
+		    firstPartOfKey = path.substring(1, path.length-1) || 'home';	
+		}
+		//console.log(firstPartOfKey);
+		key = firstPartOfKey +  window.location.hash;
+		ta.value = window.localStorage.getItem(key) || '';
+		ta.className = 'mynotes';
+		
+		ta.addEventListener('keyup', function(){
+			//console.log(key + ' ' + ta.value)
+		    window.localStorage.setItem(key,ta.value);
+		});
+		currentSlide.appendChild(ta);
+	},
+	
     handleKeys: function(e) {
       // disable keys for these elements
       if (/^(input|textarea|pre|object)$/i.test(e.target.nodeName)) return;
@@ -351,8 +372,8 @@ SlideShow.prototype = {
 		  case 50: // 2
 		  case 190: // 2
 			 this.showNotes(); break;
-		  case 51: // 3
-			 this.switch3D(); break;
+	      case 52: // 4
+		     this.addNotes(); break;
     	}
     },
 	
@@ -376,6 +397,3 @@ SlideShow.prototype = {
   var slideshow = new SlideShow(query('.slide'));
 })();
 
-
-
-  

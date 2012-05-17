@@ -24,6 +24,24 @@
 -webkit-background-clip: text,text,text,text,text,text,text,text, border;
 color: rgba(0,0,0,0);
     }
+	
+.invert h1{
+
+    background: 
+        -webkit-linear-gradient(left, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 50%),
+        -webkit-linear-gradient(left, rgba(255,255,255,0) 40%, rgba(255,255,255,0.2) 40%),
+        -webkit-linear-gradient(left, rgba(255,255,255,0) 60%, rgba(255,255,255,0.2) 60%),
+        -webkit-linear-gradient(left, rgba(255,255,255,0) 50%, rgba(255,255,255,0.2) 50%),
+        -webkit-linear-gradient(left, rgba(255,255,255,0) 40%, rgba(255,255,255,0.2) 40%),
+        -webkit-linear-gradient(left, rgba(255,255,255,0) 60%, rgba(255,255,255,0.2) 60%),
+        -webkit-linear-gradient(left,
+        red 14%, orange 15%, orange 28%, yellow 29%, yellow 42%, green 43%, green 56%, blue 57%, blue 70%, magenta 71%, magenta 85%, purple 86%), white;
+    -webkit-background-size: 1px 50%, 1px 50px, 32px, 120px, 80px, 70px, 500px;
+    
+-webkit-background-clip: text,text,text,text,text,text,text,text, border;
+color: rgba(0,0,0,0);
+    }
+
 .normal h1.textmask {
 	font-size: 200%;	
 }
@@ -178,6 +196,10 @@ function setClass(objectID,newClass) {
 </section>
 </div> 
  
+<div class="slide object"> 
+     <object data="http://html9responsiveboilerstrapjs.com/"></object>
+     <a href="http://html9responsiveboilerstrapjs.com/">HTML9 Responsive Boilerstrap JS</a>
+ </div>
  
  <div class="slide intro"> 
 <header><h1 class="textmask">Vanilla JS</h1></header> 
@@ -197,7 +219,7 @@ function setClass(objectID,newClass) {
 </div> 
  
   
-<div class="slide intro" style="background-color: #000"> 
+<div class="slide intro invert" style="background-color: #000"> 
 <header><h1>4,218 brains are better than 1</h1></header> 
 <section class="content"> 
 <img src="images/brain.jpg" alt="Homer Simposon's Brain"/>
@@ -207,18 +229,31 @@ function setClass(objectID,newClass) {
  
   
 <div class="slide normal"> 
-<header><h1></h1></header> 
+<header><h1 class="textmask">Can be useful</h1></header> 
 <section class="content"> 
-<pre contenteditable></pre>
+<ul>
+	<li>Don't reinvent the wheel</li>
+	<li>Code written by pros</li>
+	<li>Faster, Optimized code</li>
+	<li>Code Faster</li>
+	<li>More readable code</li>
+    <li>Less code with function chaining</li>
+    <li>Implicit iterator behaviour</li>
+</ul>
 </section>
 </div> 
  
   
-<div class="slide normal"> 
-<header><h1></h1></header> 
-<section class="content"> 
-<pre contenteditable></pre>
-</section>
+<div class="slide intro"> 
+<header>
+<h1>Seriously?</h1></header> 
+
+<pre>&lt;script src="jquery.js"&gt;&lt;/script>
+          
+&lt;script type="text/javascript">                                         
+   $('li:first-child').addClass('first');     
+&lt;/script>
+</pre>
 </div> 
  
   
