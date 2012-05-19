@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /* CSS Document */
 :root {
-	font-size: 62.5%;	
+	font-size: 162.5%;	
 }
 body {
 	font-size: 20px;
@@ -30,7 +30,7 @@ body {
 	right: 5px;
 	z-index: 500;
 }
-
+a {color: #900;}
 
 .key {
 	color: black;
@@ -96,7 +96,7 @@ body {
 	left: 50%;
 	top: 50%;
 	margin-top: -350px;
-	background-color: #eee;
+	background-color: #fafafa;
 	-webkit-transition: all 0.25s ease-in-out;
 	-moz-transition: all 0.25s ease-in-out;
 	-ms-transition: all 0.25s ease-in-out;
@@ -110,26 +110,26 @@ body {
 	padding-left: 20px;
 	padding-top: 10px;
 	border-radius: 15px;
-	border: 5px solid #fff;
-	
 	box-shadow: 0 0 20px rgba(0,0,0,0.6), inset 0 0 6px rgba(0,0,0,0.4);
+	border: 5px solid #fff;
 }
 .slide.intro {
 	text-align: center;
-	font-size: 200%;
+	font-size: 2rem;
 }
 .slide.intro hgroup {
 	margin-top: 200px;
 }
+.intro h1 {
+	font-size: 3.4rem;
+}	
 .content {
-	font-size: 140%;
+	font-size: 1.4rem;
 }
 .content input, button {
-	font-size: 140%;
+	font-size: 1.4rem;
 }
-.content td {
- 	border: 1px solid black;
-}
+
 .invalid {
 	background-color: red;
 }
@@ -137,7 +137,7 @@ body {
 	text-align: center;
 }
 .slide.section,.slide.intro header {
-	font-size: 200%;
+	font-size: 2rem;
 }
 .slide li {
 margin-bottom: 10px;
@@ -146,7 +146,7 @@ margin-bottom: 10px;
 	max-height: 90%;
 }
 .slide p {
-font-size: 120%;
+font-size: 1.2rem;
 }
 .slide .counter {
 	color: #999999;
@@ -154,7 +154,7 @@ font-size: 120%;
 	left: 20px;
 	bottom: 20px;
 	display: block;
-	font-size: 70%;
+	font-size: 0.7rem;
 }
 .slide.title > .counter,
 .slide.segue > .counter,
@@ -190,7 +190,7 @@ font-size: 120%;
 }
 
 section footer, .slide footer {
-font-size: 22px;
+font-size: 0.7rem;
 margin: 20px 0 0 30px;
 }
 section footer {
@@ -204,7 +204,7 @@ width: 800px;
 		border: 1px #aaa solid;
 		border-radius: 5px;
 		width: 100%;
-		font-size: 18px;
+		font-size: 1rem;
 		font-style: italic;
 		box-shadow: inset 0 0 8px rgba(0,0,0,0.3);
 		padding: 5px;
@@ -220,14 +220,13 @@ width: 800px;
 	list-style-type: none;
 	-webkit-appearance: none;
 	color: #333;
-	font-size: 20px;
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
 	background: -webkit-linear-gradient(#fff 50%, #eee 50%, #ddd);
 	border-radius: 7px;
 	border: none;
 	padding: 5px 10px;
 	letter-spacing:1px;
-	font-size: 1.4rem;
+	font-size: 0.7rem;
 	box-shadow: inset 0 0 2px rgba(0,0,0,0.3),
 	  2px 2px 5px rgba(0,0,0,0.7);
 	border: 3px solid #eee;
@@ -241,14 +240,14 @@ header {
 	text-shadow: rgba(0, 0, 0, 0.2) 0 2px 5px;
 	left: 30px;
 	top: 25px;
-	font-size: 140%;
+	font-size: 1.4rem;
 }
 h1 {
-	font-size: 140%;
+	font-size: 2.4rem;
 	margin-bottom: 0px;
 }
 h2 {
-	font-size: 90%;
+	font-size: 0.9rem;
 }
 h1:first-child {
 	margin-top: 0;
@@ -260,11 +259,11 @@ section, footer {
 	overflow: hidden;
 }
 footer {
-	font-size: 100%;
+	font-size: 1rem;
 	margin: 20px 0 0 30px;
 }
 a {
-	color: inherit;
+	color: #900;
 	display: inline-block;
 	text-decoration: none;
 	line-height: 110%;
@@ -274,13 +273,15 @@ a:hover {
 }
 pre {
 	text-align: left;
-	font-size: 80%;
+	font-size: 1.2rem;
 	padding: 10px 20px;
-	background: rgba(255,255,255, 0.5);
+	background: #fff;
 	-moz-border-radius: 8px;
 	border-radius: 8px;
-	border: 1px solid white;
+	border: 1px dotted #ccc;
+	box-sizing: border-box;
 }
+pre:not([style]) {width: 850px;}
 pre b {
 	font-weight: normal;
 	color: #c61800;
@@ -294,7 +295,7 @@ pre em {
 }
 #presentation-counter {
 	color: #ccc;
-	font-size: 70%;
+	font-size: 0.7rem;
 	letter-spacing: 1px;
 	position: absolute;
 	top: 40%;
@@ -329,7 +330,7 @@ pre em {
 }
 .intro .col2 {
 	margin-top: -10px;
-	font-size: 70%;	
+	font-size: 0.7rem;	
 }
 @media print {
 	.slide {

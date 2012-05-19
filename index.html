@@ -46,6 +46,69 @@ color: rgba(0,0,0,0);
 	font-size: 200%;	
 }
 }
+td, th {padding: 3px 5px;}
+thead tr {
+  background-color: #999; 
+  color: #fff;
+}
+tbody tr:nth-of-type(odd) {
+  background-color: #fff;
+}
+tbody tr:nth-of-type(even) {
+  background-color: #ccc;
+}
+.shrink section * {
+	font-size: 0.9rem;	
+}
+.slide nav * {margin: 0; padding: 0;}
+nav ul li {
+  list-style-type: none;
+}
+nav > ul > li {
+  display: inline-block; 
+  position:relative;
+}
+nav ul ul {
+  transform: scale(1,0); 
+  transform-origin: top center; 
+  transition:0.2s linear 50ms; 
+  position:absolute; 
+  top: 100%;
+}
+nav li:hover ul {
+  transform: scale(1,1);
+}
+.slide nav ul, .slide nav li  {margin: 0; padding: 0;}
+.slide nav ul li {list-style-type: none; background-color: #000000; color: white; margin:0; padding: 3px 5px; border: 1px solid #fff;}
+nav > ul > li {display: inline-block; position:relative;}
+nav ul ul {
+	
+	-webkit-transform: scale(1,0);
+	-moz-transform: scale(1,0);
+	-ms-transform: scale(1,0);
+	-o-transform: scale(1,0);
+	transform: scale(1,0);
+	 -webkit-transform-origin: top center; 
+	 -moz-transform-origin: top center; 
+	 -msitransform-origin: top center; 
+	 -o-transform-origin: top center; 
+	 transform-origin: top center; 
+	 
+	 -webkit-transition:0.2s linear 50ms;
+	 -moz-transition:0.2s linear 50ms;
+	 -ms-transition:0.2s linear 50ms;
+	 -o-transition:0.2s linear 50ms;
+	 transition:0.2s linear 50ms; 
+	 
+	 position:absolute; top: 100%; left:0;}
+nav li:hover ul {
+	-webkit-transform: scale(1,1);
+	-moz-transform: scale(1,1);
+	-ms-transform: scale(1,1);
+	-o-transform: scale(1,1);
+	transform: scale(1,1);
+	}
+
 </style>
 </head> 
 
@@ -246,19 +309,144 @@ function setClass(objectID,newClass) {
 <div class="slide intro"> 
 <header>
 <h1>Seriously?</h1></header> 
-
+<section>
 <pre>&lt;script src="jquery.js"&gt;&lt;/script>
           
 &lt;script type="text/javascript">                                         
-   $('li:first-child').addClass('first');     
+   $('li:first').addClass('first');     
 &lt;/script>
 </pre>
+</section>
+</div> 
+ 
+ 
+<div class="slide normal"> 
+<header>
+<h1>Natively...</h1></header> 
+
+<pre>querySelector('li').classList.add('first');
+</pre>
+<p>or simply</p>
+<pre>li:first-of-type {
+    border-right: none;
+}</pre>
+</div> 
+
+  
+<div class="slide intro"> 
+<header>
+<h1><span style="float:left">JavaScript...</span>
+<br style="clear: both;"><br/> it's not always necessary</h1>
+</header> 
+</div> 
+
+    
+<div class="slide normal shrink"> 
+<header><h1>Zebra Tables</h1></header> 
+<section class="content"> 
+<pre contenteditable style="float:left">thead tr {
+  background-color: #999; 
+  color: #fff;
+}
+tbody tr<strong>:nth-of-type(odd)</strong> {
+  background-color: #fff;
+}
+tbody tr<strong>:nth-of-type(even)</strong> {
+  background-color: #ccc;
+}</pre>
+<table style="float: right" cellpadding="0" cellspacing="0" border="0">
+<thead><tr><th>First</th><th>Last</th><th>Twitter</th></tr></thead>
+<tbody>
+<tr><td>Estelle</td><td>Weyl</td><td>@estellevw</td></tr>
+<tr><td>Nicole</td><td>Sullivan</td><td>@stubbornella</td></tr>
+<tr><td>Amy</td><td>Hoy</td><td>@amyhoy</td></tr>
+<tr><td>Sarah</td><td>Mei</td><td>@sarahmei</td></tr>
+<tr><td>Rebecca</td><td>Murphey</td><td> @rmurphey</td></tr>
+<tr><td>Garann</td><td>Means</td><td>@garannm</td></tr>
+<tr><td>Tomomi</td><td>Imura</td><td>girlie_mac</td></tr>
+<tr><td>Pamela</td><td>Fox</td><td>@pamelafox</td></tr>
+<tr><td>Stacie</td><td>Hibino</td><td>@staciehibino</td></tr>
+<tr><td>Sharon</td><td>Minsuk</td><td>@sharonminsuk</td></tr>
+<tr><td>Sarah</td><td>Allen</td><td>@ultrasaurus</td></tr>
+<tr><td>Avni</td><td>Khatri</td><td>@avni321</td></tr>
+<tr><td>Shelley</td><td>Powers</td><td>@shelleypowers</td></tr>
+</tbody>
+</table>
+</section>
+</div> 
+ 
+<!-- Useful example -->
+<div class="slide normal"> 
+     <header><h1>Animating without JS</h1></header> 
+     <section class="content" style="min-height: 400px;">
+     
+<nav>
+	<ul>
+    	<li>About
+        <ul>
+            <li>Me</li>
+            <li>You</li>
+            <li>Them</li>
+            <li>Nobody</li>
+       </ul>
+        </li>
+        <li>Posts
+        <ul>
+            <li>Door Post</li>
+            <li>Wall hanging</li>
+            <li>Stair Banister</li>
+            <li>Washington</li>
+       </ul></li>
+        <li>Topics
+        <ul>
+            <li>CSS3</li>
+            <li>JavaScript</li>
+            <li>HTML5</li>
+            <li>SEO</li>
+       </ul></li>
+        <li>Events
+        <ul>
+            <li>Party</li>
+            <li>Dinner</li>
+            <li>Hike</li>
+            <li>Foo Camp</li>
+       </ul></li>
+   </ul>
+</nav>
+ <pre contenteditable>nav > ul > li {
+  display: inline-block; 
+  position:relative;
+}
+nav ul ul {
+  transform: scale(1,0); 
+  transform-origin: top center; 
+  transition: 0.2s linear 50ms; 
+  position: absolute;top: 100%;
+}
+nav li:hover ul {
+  transform: scale(1,1);
+}</pre>
+     </section>
+ </div>  
+
+ 
+ <div class="slide normal"> 
+<header><h1>Selectors API</h1></header> 
+<section class="content">
+<p>Enables accessing elements in the DOM with standard CSS selector.</p>
+<p>Supported since IE8.</p>
+<p>Spec: <a href="http://www.w3.org/TR/selectors-api/">Selectors API level 1</a><br/>
+<a href="http://www.w3.org/TR/selectors-api2/">Selectors API Level 2</a></p> 
+<pre contenteditable>document.querySelector(selector);
+document.querySelectorAll(selector);</pre>
+</section>
 </div> 
  
   
 
-    
-
+ 
+ 
+ 
    
 
    </div>
