@@ -547,13 +547,65 @@ for(var i=0; i&lt;slides.length; i++){
 <div class="slide normal"> 
 <header><h1>classList</h1></header> 
 <section class="content"> 
-<pre contenteditable></pre>
+<pre contenteditable>
+<span style="font-size: 0.85rem;">$('#foo').</span><strong>addClass</strong>('bar');
+<span style="font-size: 0.85rem;">$('#foo').</span><strong>removeClass</strong>('bar');
+<span style="font-size: 0.85rem;">$('#foo').</span><strong>toggle</strong>('bar');</pre>
+ 
+<pre contenteditable style=" margin-right:-80px;">
+<span style="font-size: 0.85rem;">d.querySelector('#foo').</span><strong>classList.add</strong>('bar');
+<span style="font-size: 0.85rem;">d.querySelector('#foo').</span><strong>classList.remove</strong>('bar');
+<span style="font-size: 0.85rem;">d.querySelector('#foo').</span><strong>classList.toggle</strong>('bar');</pre>
+
+<pre contenteditable>
+fooCL = d.querySelector('#foo').</span><strong>classList</strong>;
+fooCL.<strong>add</strong>('bar');
+fooCL.<strong>remove</strong>('bar');
+fooCL.<strong>toggle</strong>('bar');</pre>
 </section>
 </div> 
  
+ 
+ <div class="slide normal"> 
+<header><h1>no native iterations</h1></header> 
+<section class="content">
+<p>jQuery</p> 
+<pre contenteditable>
+$('.foo').addClass('bar');</pre>
+
+<p>Native</p>
+<pre contenteditable>
+var foos = d.querySelectorAll('.foo');
+
+for(var i = 0; i < foos.length; i++){
+  foos[i].classList.add('bar');
+}</pre>
+
+</section>
+</div> 
   
  
-
+<div class="slide">
+<header><h1>classList</h1></header>
+<section class="content">
+        <pre contenteditable>
+var el = d.querySelector('#foo').<b>classList</b>;
+el.<b>add</b>('zap');
+el.<b>remove</b>('bar');
+el.<b>toggle</b>('bar');
+el.<b>contains</b>('bar')); // true or false
+var classes = el.toString();
+</pre>
+       <ul class="icons" style="clear: both;">
+         <li class="chrome">Chrome</li>
+         <li class="safari new">Safari 5.1</li>
+         <li class="firefox">Firefox </li>
+         <li class="opera">Opera</li>
+         <li class="ie bad">IE 10</li>
+         <li class="txt">mobile: Android 3, Opera 11.1</li>
+  </ul>
+      </section>
+  </div>  
  
  
  
