@@ -529,6 +529,24 @@ console.log('QSA: ' + QSA.length);
  <div class="slide normal"> 
 <header><h1>No Native Iteration</h1></header> 
 <section class="content"> 
+<pre contenteditable>
+$('#slides .slide').addClass('current');</pre>
+
+<pre contenteditable>
+var slides = 
+   d.querySelectorAll('#slides .slide');
+
+for(var i=0; i&lt;slides.length; i++){
+   slides[i].classList.add('current');
+}</pre>
+
+</section>
+</div> 
+ 
+  
+<div class="slide normal"> 
+<header><h1>classList</h1></header> 
+<section class="content"> 
 <pre contenteditable></pre>
 </section>
 </div> 
