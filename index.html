@@ -60,13 +60,14 @@ tbody tr:nth-of-type(even) {
 .shrink section * {
 	font-size: 0.9rem;	
 }
-.slide nav * {margin: 0; padding: 0;}
+.slide nav * {margin: 0; padding: 0; background-color: black;}
 nav ul li {
   list-style-type: none;
 }
 nav > ul > li {
   display: inline-block; 
   position:relative;
+  border: none;
 }
 nav ul ul {
   transform: scale(1,0); 
@@ -79,7 +80,9 @@ nav li:hover ul {
   transform: scale(1,1);
 }
 .slide nav ul, .slide nav li  {margin: 0; padding: 0;}
-.slide nav ul li {list-style-type: none; background-color: #000000; color: white; margin:0; padding: 3px 5px; border: 1px solid #fff;}
+.slide nav ul li {list-style-type: none; background-color: #000000; color: white; margin:0; padding: 3px 5px; 
+}
+.slide nav ul ul li {border: 1px solid #fff;}
 nav > ul > li {display: inline-block; position:relative;}
 nav ul ul {
 	
@@ -88,6 +91,7 @@ nav ul ul {
 	-ms-transform: scale(1,0);
 	-o-transform: scale(1,0);
 	transform: scale(1,0);
+	
 	 -webkit-transform-origin: top center; 
 	 -moz-transform-origin: top center; 
 	 -msitransform-origin: top center; 
@@ -100,7 +104,8 @@ nav ul ul {
 	 -o-transition:0.2s linear 50ms;
 	 transition:0.2s linear 50ms; 
 	 
-	 position:absolute; top: 100%; left:0;}
+	 position:absolute; top: 100%; left:0;
+	 }
 nav li:hover ul {
 	-webkit-transform: scale(1,1);
 	-moz-transform: scale(1,1);
@@ -108,7 +113,8 @@ nav li:hover ul {
 	-o-transform: scale(1,1);
 	transform: scale(1,1);
 	}
-
+.half {opacity: 0.2;}
+.white {text-align: left; color: #fff; text-shadow: 2px 2px  4px #000, -2px -2px  4px #000;}
 </style>
 </head> 
 
@@ -158,10 +164,7 @@ nav li:hover ul {
   
 <div class="slide normal"> 
 <header><h1>The code</h1></header>
-<pre contenteditable style="overflow: scroll; height:600px;">var isDHTML = 0;
-var isID = 0;
-var isAll = 0;
-var isLayers = 0;
+<pre contenteditable style="overflow: scroll; height:600px; font-size:0.8rem">var isDHTML, isID, isAll, isLayers;
 
 if (document.getElementById) {
   isID = 1; isDHTML = 1;
@@ -182,12 +185,12 @@ function findDOM(objectID,withStyle) {
    else { 
      if (isAll) { return (document.all[objectID].style); }
      else {
-            if (isLayers) { return (document.layers[objectID]); }
-        };
-    }
+        if (isLayers) { return (document.layers[objectID]); }
+     };
+   }
  } else {
-    if (isID) { return (document.getElementById(objectID)) ; }
-    else { 
+    if (isID) { return (document.getElementById(objectID)); 
+    } else { 
        if (isAll) { 
           return (document.all[objectID]); 
        } else {
@@ -203,6 +206,26 @@ function setClass(objectID,newClass) {
 }</pre>
 </div> 
  
+<div class="slide normal"> 
+     <header><h1>Why frameworks?</h1></header> 
+     <section class="content"> 
+     <pre contenteditable style="font-size: 0.8em;">
+if (el.<strong>addEventListener</strong>) { <span class="half">// W3C</span>
+  el.addEventListener("mouseover",func,false);
+  el.addEventListener("mouseout",func,false);
+} <span class="half">// IE5+, Opera</span>
+else if (el.<strong>attachEvent</strong>) {
+  el.attachEvent ("onmouseover", func);
+  el.attachEvent ("onmouseout", func);
+} 
+else { <span class="half">// Netscape 4, IE5Mac</span>
+  el.onmouseover = func;
+  el.onmouseout = func;
+} </pre>
+
+<p class="pop">addEventListener supported in IE9 &amp; Opera 7</p>
+     </section>
+ </div>
 
  
   
@@ -260,15 +283,15 @@ function setClass(objectID,newClass) {
  
 <div class="slide object"> 
      <object data="http://html9responsiveboilerstrapjs.com/"></object>
-     <a href="http://html9responsiveboilerstrapjs.com/">HTML9 Responsive Boilerstrap JS</a>
+     <a href="http://html9responsiveboilerstrapjs.com/" class="objectlink">HTML9 Responsive Boilerstrap JS</a>
  </div>
  
- <div class="slide intro"> 
-<header><h1 class="textmask">Vanilla JS</h1></header> 
-<section class="content"> 
-<pre contenteditable style="text-align:center">&lt;script>&lt;/script></pre>
-</section>
-</div>   
+<div class="slide object"> 
+     <object data="html9/index.html"></object>
+     <a href="http://html9responsiveboilerstrapjs.com/">HTML9 Responsive Boilerstrap JS</a>
+</div>
+ 
+ 
  
 <div class="slide intro"> 
 <header><h1>Frameworks <br>ARE Good</h1></header> 
@@ -283,13 +306,17 @@ function setClass(objectID,newClass) {
   
 <div class="slide intro invert" style="background-color: #000"> 
 <header><h1>4,218 brains are better than 1</h1></header> 
-<section class="content"> 
-<img src="images/brain.jpg" alt="Homer Simposon's Brain"/>
+<section class="content" style="background: url(images/brain.jpg) no-repeat bottom center; min-height: 450px">
+<p class="temphidden white">Faster, optimized, readable code</p>
+<p class="temphidden white">Function chaining &amp; implicit iteration behavior</p>
+<p class="temphidden white">Less code. Faster to code.</p>
+<p class="temphidden white">Faster learning curve. No need to know JS?!?!</p>
+
 <footer style="color:#666">Photo: <a href="http://www.thesimpsons.com/" style="color: #fff;">The Simpsons</a></footer>
 </section>
 </div> 
  
-  
+<!--  
 <div class="slide normal"> 
 <header><h1 class="textmask">Can be useful</h1></header> 
 <section class="content"> 
@@ -303,7 +330,7 @@ function setClass(objectID,newClass) {
     <li>Implicit iterator behaviour</li>
 </ul>
 </section>
-</div> 
+</div> -->
  
   
 <div class="slide intro"> 
@@ -319,6 +346,60 @@ function setClass(objectID,newClass) {
 </section>
 </div> 
  
+<div class="slide object">
+<object data="http://jsfiddle.net/chriscoyier/WTAr9/"></object>
+</div> 
+
+<div class="slide object">
+<object data="http://jsfiddle.net/estelle/WTAr9/210/"></object>
+</div> 
+
+<div class="slide normal"> 
+<header><h1></h1></header> 
+<section class="content"> 
+<p>With jQuery</p>
+<pre contenteditable style="font-size: 0.7rem">$("a[href^='http']").each(function() {
+  $(this).css({
+    background-image: "url(http://g.etfv.co/" + this.href + ")"});
+});​</pre>
+<p>with Vanilla.js</p>
+<pre contenteditable style="font-size: 0.7rem">var links = 
+    document.querySelectorAll("a[href^='http']"), i;
+
+for (i=0; i&lt;links.length; i++){
+    links[i].style.backgroundImage = 
+      "url(http://g.etfv.co/" + links[i].getAttribute('href') +")";
+}​</pre>
+<p>jquery.min.js<br/>
+from: ajax.googleapis.com/ajax/libs/jquery/1.7.2<br/>
+96.2KB + extra HTTP request</p>
+</section>
+</div> 
+ 
+<div class="slide normal" style="background-color: #fff">
+<header><h1>Mobile Matters</h1>
+<ul>
+	<li>Minimize Battery usage</li>
+<li>Reduce Latency with fewest HTTP requests</li>
+<li>Manage limited mobile memory</li>
+<li>Ensure a responsive UI</li>
+</ul> 
+<img src="../mobile/images/latency.gif" alt="Latency"/>
+<a href="http://estelle.github.com/mobile/" style="float: right">Mobile Performance presentation</a>
+ </div>  
+
+
+
+
+
+
+
+ <div class="slide intro"> 
+<header><h1 class="textmask">Vanilla JS</h1></header> 
+<section class="content"> 
+<pre contenteditable style="text-align:center">&lt;script>&lt;/script></pre>
+</section>
+</div>   
  
 <div class="slide normal"> 
 <header>
@@ -431,22 +512,34 @@ nav li:hover ul {
  </div>  
 
 <div class="slide intro"> 
-     <header><h1>CSS is Awesome...</h1></header>  
+     <header><h1 class="temphidden">CSS is Awesome...</h1><h1 class="temphidden">... and so is JavaScript</h1></header>  
 </div>
-
 <div class="slide intro"> 
-     <header><h1>... and so is JavaScript</h1></header>  
-</div>
-
+     <header><h1 style="font-size: 2.75rem;">getElementsByClassName</h1></header> 
+ </div> 
 <div class="slide normal"> 
      <header><h1>getElementsByClassName</h1></header> 
-     <section class="content"> 
-     <pre contenteditable>d.gelElementsByClassName('foo');
+     <section class="content">
      
-var el = document.getElementById('bar');
-el.gelElementsByClassName('foo');
+<p>on the document</p> 
+     <pre contenteditable>d.getElementsByClassName('foo');
+     </pre>
+
+<p>on a DOM node</p>     
+<pre contenteditable>var el = document.getElementById('bar');
+el.getElementsByClassName('foo');
 </pre>
-<pre style="font-size:0.75rem" contenteditable>
+<p>jQuery Equivalent</p>
+<pre contenteditable>var el = $('.bar');</pre>
+ </section>
+ </div>
+ 
+ 
+<div class="slide normal"> 
+     <header><h1>Live NodeList</h1></header> 
+     <section class="content" style="margin-top: -20px;"> 
+<p class="half">Try the following code in the console</p>   
+<pre style="font-size:0.9rem" contenteditable>
 var container = document.getElementById('slides');
 var slides = container.getElementsByClassName('slide');
 console.log(slides.length);
@@ -454,40 +547,47 @@ var foo = document.createElement('div');
 foo.classList.add('slide');
 container.appendChild(foo);
 console.log(slides.length);</pre>
-     </section>
+<ul><li>Live NodeList</li><li>Case-sensitive</li><li>Empty NodeList returns true</li></ul>
+<pre style="font-size:0.9rem" contenteditable>var emptyList = document.getElementsByClassName('zxcv');
+if(emptyList) {console.log('returned true')};</pre>     </section>
  </div>
 
 <div class="slide normal"><section class="content"> 
      <h1 style="font-size: 1.8rem">getElementsByClassName(names)</h1>
      
      <p>The <strong>getElementsByClassName(classNames)</strong> method takes a string that contains an unordered set of unique <strong>space-separated</strong> tokens representing classes. When called, the method must return a <strong><i class="textmask">live</i> NodeList</strong> object containing all the elements in the document, in <strong>tree order</strong>, that have all the classes specified in that argument, having obtained the classes by <strong>splitting a string on spaces</strong>. If there are no tokens specified in the argument, then the method must return an <strong>empty NodeList</strong>. If the document is in quirks mode, then the comparisons for the classes must be done in an ASCII case-insensitive manner, otherwise, the comparisons must be done in a <strong>case-sensitive</strong> manner.<br/> <a href="http://dev.w3.org/html5/spec-LC/dom.html#dom-document-getelementsbyclassname" target="_blank">-- Specification</a>.
-     </section>
+</p></section>    
  </div>
  
  
  <div class="slide normal"> 
      <header><h1>getElementsByClassName</h1></header> 
      <section class="content"> 
-     <pre contenteditable>d.gelElementsByClassName('foo');
+     <pre contenteditable>d.getElementsByClassName('foo');
      
 var el   = document.getElementById('bar');
 var EBCN = el.getElementsByClassName('foo');
 </pre>
 <p>returns a live NodeList</p>
 <p>Doesn't work in IE8 or earlier. Works in all other browsers</p>
-<p class="pop">Supported since IE9</span></p>
+<p class="pop">Supported since IE9</p>
 </section>
 </div>
- 
+ <div class="slide intro"> 
+     <header><h1>Selectors API</h1></header> 
+ </div> 
  
  <div class="slide normal"> 
 <header><h1>Selectors API</h1></header> 
-<section class="content"> 
-<pre contenteditable>var el   = document.querySelector('#bar');
+<section class="content">
+<pre contenteditable>var chil = $('#bar .foo');</pre> 
+<p>Natively</p>
+<pre contenteditable>var el   = document.<strong>querySelector</strong>('#bar');
 
-var chil = el.querySelectorsAll('.foo');</pre>
+var chil = el.<strong>querySelectorsAll</strong>('.foo');</pre>
 <p>or</p>
-<pre contenteditable>chil = el.querySelectorsAll('#bar .foo');</pre>
+<pre contenteditable>chil = el.<strong>querySelectorsAll</strong>('#bar .foo');</pre>
+<p class="pop">Supported since IE8</span></p>
 </section>
 </div> 
   
@@ -543,6 +643,11 @@ for(var i=0; i&lt;slides.length; i++){
 </section>
 </div> 
  
+ 
+   
+<div class="slide intro"> 
+     <header><h1>classList</h1></header> 
+ </div> 
   
 <div class="slide normal"> 
 <header><h1>classList</h1></header> 
@@ -550,7 +655,8 @@ for(var i=0; i&lt;slides.length; i++){
 <pre contenteditable>
 <span style="font-size: 0.85rem;">$('#foo').</span><strong>addClass</strong>('bar');
 <span style="font-size: 0.85rem;">$('#foo').</span><strong>removeClass</strong>('bar');
-<span style="font-size: 0.85rem;">$('#foo').</span><strong>toggle</strong>('bar');</pre>
+<span style="font-size: 0.85rem;">$('#foo').</span><strong>toggle</strong>('bar');
+<span style="font-size: 0.85rem;">$('#foo').</span><strong>hasClass</strong>('bar');</pre>
  
 <pre contenteditable style=" margin-right:-80px;">
 <span style="font-size: 0.85rem;">d.querySelector('#foo').</span><strong>classList.add</strong>('bar');
@@ -561,11 +667,34 @@ for(var i=0; i&lt;slides.length; i++){
 fooCL = d.querySelector('#foo').</span><strong>classList</strong>;
 fooCL.<strong>add</strong>('bar');
 fooCL.<strong>remove</strong>('bar');
-fooCL.<strong>toggle</strong>('bar');</pre>
+fooCL.<strong>toggle</strong>('bar');
+fooCL.<strong>contains</strong>('bar'); // true or false</pre>
 </section>
 </div> 
  
- 
+<div class="slide">
+<header><h1>classList</h1></header>
+<section class="content">
+        <pre contenteditable>
+var <b>el</b>=d.querySelector('#foo').<b>classList</b>;
+el.<b>add</b>('zap');
+el.<b>remove</b>('bar');
+el.<b>toggle</b>('bar');
+el.<b>contains</b>('bar')); // true or false
+var classes = el.toString();
+</pre>
+       <ul class="icons" style="clear: both;">
+         <li class="chrome">Chrome</li>
+         <li class="safari new">Safari 5.1</li>
+         <li class="firefox">Firefox </li>
+         <li class="opera">Opera</li>
+         <li class="ie bad">IE 10</li>
+         <li class="txt">mobile: Android 3, Opera 11.1</li>
+  </ul>
+      </section>
+  </div>  
+  
+   
  <div class="slide normal"> 
 <header><h1>no native iterations</h1></header> 
 <section class="content">
@@ -584,29 +713,10 @@ for(var i = 0; i < foos.length; i++){
 </section>
 </div> 
   
- 
-<div class="slide">
-<header><h1>classList</h1></header>
-<section class="content">
-        <pre contenteditable>
-var el = d.querySelector('#foo').<b>classList</b>;
-el.<b>add</b>('zap');
-el.<b>remove</b>('bar');
-el.<b>toggle</b>('bar');
-el.<b>contains</b>('bar')); // true or false
-var classes = el.toString();
-</pre>
-       <ul class="icons" style="clear: both;">
-         <li class="chrome">Chrome</li>
-         <li class="safari new">Safari 5.1</li>
-         <li class="firefox">Firefox </li>
-         <li class="opera">Opera</li>
-         <li class="ie bad">IE 10</li>
-         <li class="txt">mobile: Android 3, Opera 11.1</li>
-  </ul>
-      </section>
-  </div>  
-  
+<div class="slide intro"> 
+     <header><h1>data- &amp; dataset</h1></header> 
+ </div> 
+
 <div class="slide normal"> 
 <header><h1>Attribute Abuse</h1></header> 
 <section class="content">
@@ -718,6 +828,33 @@ var currentCard = cardinfo.join('');</pre>
 <li>All browsers <strong class="textmask">EXCEPT IE</strong> support accessing values with <strong class="textmask">dataset</strong> property.</li>
 </ul>
 <p class="pop"><a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/elements.html#dom-dataset">WHAT-WG Specification</a></p>
+</section>
+</div> 
+ 
+ 
+   
+<div class="slide normal"> 
+<header><h1>in General...</h1></header> 
+<section class="content">
+<ul>
+<li class="temphidden">If you can do it in a few lines of code, don't import a library</li>
+<li class="temphidden">Use libraries as tools, not as a crutch.</li>
+<li class="temphidden">Learn to code JS.</li>
+<li class="temphidden">Remember mobile</li>
+</ul>
+</section>
+</div> 
+ 
+ 
+  
+<div class="slide normal"> 
+<header><h1>in General...</h1></header> 
+<section class="content">
+<ul><li class="temphidden">If you can do it in a few lines of code, don't import a library</li>
+<li>If you can make the home page work without requiring the library, do it!</li>
+<li class="temphidden">Use libraries as tools, not as a crutch.</li>
+<li class="temphidden">Learn to code JavaScript not just jQuery.</li>
+<li class="temphidden">Remember mobile</li></ul>
 </section>
 </div> 
  

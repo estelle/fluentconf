@@ -279,6 +279,7 @@ SlideShow.prototype = {
     current: 0,
 
     next: function() {
+		if(document.querySelectorAll('.current .temphidden').length) {this.addClasses(); return;}
 		if (!this._slides[this.current-1].buildNext()) {
 		  this.current = Math.min(this.current + 1, this._slides.length);
 		  this._update();
@@ -356,6 +357,11 @@ SlideShow.prototype = {
 		currentSlide.appendChild(ta);
 	},
 	
+	addClasses: function(){
+		var paragraphToShow = document.querySelector('.current .temphidden');
+		paragraphToShow.classList.remove('temphidden');
+	},
+	
     handleKeys: function(e) {
       // disable keys for these elements
       if (/^(input|textarea|pre|object)$/i.test(e.target.nodeName)) return;
@@ -374,6 +380,8 @@ SlideShow.prototype = {
 			 this.showNotes(); break;
 	      case 52: // 4
 		     this.addNotes(); break;
+	      case 53: //5
+		     this.addClasses(); break;
     	}
     },
 	
