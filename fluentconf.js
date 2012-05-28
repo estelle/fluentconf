@@ -279,10 +279,14 @@ SlideShow.prototype = {
     current: 0,
 
     next: function() {
-		if(document.querySelectorAll('.current .temphidden').length) {this.addClasses(); return;}
-		if (!this._slides[this.current-1].buildNext()) {
-		  this.current = Math.min(this.current + 1, this._slides.length);
-		  this._update();
+		if(document.querySelector('.current .temphidden')) {
+			this.addClasses();
+			return true;
+		} else {
+			if (!this._slides[this.current-1].buildNext()) {
+			  this.current = Math.min(this.current + 1, this._slides.length);
+			  this._update();
+			}
 		}
 	 },
 	prev: function() {
@@ -332,29 +336,35 @@ SlideShow.prototype = {
 		  return;
 		}
     },
-	
 	addNotes: function(){
+		if(document.querySelector('.current textarea.mynotes')) {
+			document.querySelector('.current textarea.mynotes').classList.toggle('temphidden');
+			return;
+		}
+		
 		var ta = document.createElement('textarea'),
-		     currentSlide = document.querySelector('.current section'),
+			 currentSlide = document.querySelector('.current section'),
 			 path = window.location.pathname,
 			 A = path.lastIndexOf('/') + 1, 
 			 B = path.lastIndexOf('.'),
 			 firstPartOfKey, key;
-		if(B && B > A){	 
-		    firstPartOfKey = path.substring(A, B);
-		} else {
-		    firstPartOfKey = path.substring(1, path.length-1) || 'home';	
+		if(currentSlide){
+			if(B && B > A){	 
+				firstPartOfKey = path.substring(A, B);
+			} else {
+				firstPartOfKey = path.substring(1, path.length-1) || 'home';	
+			}
+			//console.log(firstPartOfKey);
+			key = firstPartOfKey +  window.location.hash;
+			ta.value = window.localStorage.getItem(key) || '';
+			ta.className = 'mynotes';
+			
+			ta.addEventListener('keyup', function(){
+				//console.log(key + ' ' + ta.value)
+				window.localStorage.setItem(key,ta.value);
+			});
+			currentSlide.appendChild(ta);
 		}
-		//console.log(firstPartOfKey);
-		key = firstPartOfKey +  window.location.hash;
-		ta.value = window.localStorage.getItem(key) || '';
-		ta.className = 'mynotes';
-		
-		ta.addEventListener('keyup', function(){
-			//console.log(key + ' ' + ta.value)
-		    window.localStorage.setItem(key,ta.value);
-		});
-		currentSlide.appendChild(ta);
 	},
 	
 	addClasses: function(){
@@ -379,6 +389,7 @@ SlideShow.prototype = {
 		  case 190: // 2
 			 this.showNotes(); break;
 	      case 52: // 4
+		     console.log('notes');
 		     this.addNotes(); break;
 	      case 53: //5
 		     this.addClasses(); break;

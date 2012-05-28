@@ -377,12 +377,12 @@ from: ajax.googleapis.com/ajax/libs/jquery/1.7.2<br/>
 </div> 
  
 <div class="slide normal" style="background-color: #fff">
-<header><h1>Mobile Matters</h1>
+<header><h1>Mobile Matters</h1></header>
 <ul>
 	<li>Minimize Battery usage</li>
-<li>Reduce Latency with fewest HTTP requests</li>
-<li>Manage limited mobile memory</li>
-<li>Ensure a responsive UI</li>
+    <li>Reduce Latency (fewer HTTP requests)</li>
+    <li>Manage limited memory</li>
+    <li>Ensure a responsive UI</li>
 </ul> 
 <img src="../mobile/images/latency.gif" alt="Latency"/>
 <a href="http://estelle.github.com/mobile/" style="float: right">Mobile Performance presentation</a>
@@ -394,24 +394,29 @@ from: ajax.googleapis.com/ajax/libs/jquery/1.7.2<br/>
 
 
 
- <div class="slide intro"> 
+<div class="slide intro"> 
 <header><h1 class="textmask">Vanilla JS</h1></header> 
 <section class="content"> 
-<pre contenteditable style="text-align:center">&lt;script>&lt;/script></pre>
-</section>
+	<pre contenteditable style="text-align:center">&lt;script>&lt;/script></pre>
+<p>If possible, make home pages work BEFORE the library needs to be downloaded. - SM</section>
 </div>   
  
 <div class="slide normal"> 
 <header>
-<h1>Natively...</h1></header> 
-
-<pre>var d = document;
+	<h1>Natively...</h1>
+</header> 
+ 
+<section style="margin-left:0;"> 
+<pre>var d = document, i, el, EBCN, QSA;
 d.querySelector('li').classList.add('first');
 </pre>
 <p>or simply</p>
 <pre>li:first-of-type {
     border-right: none;
 }</pre>
+<p class="half temphidden">Note: assume d, el and i are declared for entire deck.</p>
+<p class="half temphidden">Hit 4 for taking notes</p>
+</section>
 </div> 
 
   
@@ -511,12 +516,59 @@ nav li:hover ul {
      </section>
  </div>  
 
+
+<div class="slide normal" style="padding:0 20px;"> 
+     <section class="content" style="margin: 0;"> 
+<pre contenteditable style="font-size:0.8rem; position:relative;">nav > ul > li {
+  display: inline;
+  zoom: 1;
+  display: inline-block; 
+  position:relative;
+}
+nav ul ul {
+  -webkit-transform: scale(1,0); 
+  -moz-transform: scale(1,0); 
+  -ms-transform: scale(1,0); 
+  -o-transform: scale(1,0); 
+  transform: scale(1,0); 
+  -webkit-transform-origin: top center;
+  -moz-transform-origin: top center;
+  -ms-transform-origin: top center;
+  -o-transform-origin: top center;
+  transform-origin: top center; 
+  -webkit-transition: transform 0.2s linear 50ms; 
+  -moz-transition: transform 0.2s linear 50ms; 
+  -ms-transition: transform 0.2s linear 50ms; 
+  -o-transition: transform 0.2s linear 50ms; 
+  transition: transform 0.2s linear 50ms; 
+  position: absolute; top: 100%;
+  display: none;
+}
+</pre>
+<pre style="position: absolute; top:1px;right:21px;font-size:0.8rem; border:none; border-left: 1px solid #ccc; border-top-left-radius:0; border-bottom-left-radius:0;">nav li:hover ul {
+  -webkit-transform: scale(1,1);
+  -moz-transform: scale(1,1);
+  -ms-transform: scale(1,1);
+  -o-transform: scale(1,1);
+  transform: scale(1,1);
+  display: block;
+}</pre>
+     </section>
+ </div>
+
+
 <div class="slide intro"> 
-     <header><h1 class="temphidden">CSS is Awesome...</h1><h1 class="temphidden">... and so is JavaScript</h1></header>  
+     <header><h1 class="temphidden">CSS is Awesome...</h1><h1 class="temphidden">... and so is JavaScript</h1></header> 
+     <section></section> 
 </div>
+
+
 <div class="slide intro"> 
-     <header><h1 style="font-size: 2.75rem;">getElementsByClassName</h1></header> 
- </div> 
+     <header><h1 style="font-size: 2.75rem;">getElementsByClassName</h1></header>  
+     <section></section> 
+</div>
+
+ 
 <div class="slide normal"> 
      <header><h1>getElementsByClassName</h1></header> 
      <section class="content">
@@ -526,11 +578,11 @@ nav li:hover ul {
      </pre>
 
 <p>on a DOM node</p>     
-<pre contenteditable>var el = document.getElementById('bar');
+<pre contenteditable>el = document.getElementById('bar');
 el.getElementsByClassName('foo');
 </pre>
 <p>jQuery Equivalent</p>
-<pre contenteditable>var el = $('.bar');</pre>
+<pre contenteditable>el = $('.bar');</pre>
  </section>
  </div>
  
@@ -565,8 +617,8 @@ if(emptyList) {console.log('returned true')};</pre>     </section>
      <section class="content"> 
      <pre contenteditable>d.getElementsByClassName('foo');
      
-var el   = document.getElementById('bar');
-var EBCN = el.getElementsByClassName('foo');
+el   = document.getElementById('bar');
+EBCN = el.getElementsByClassName('foo');
 </pre>
 <p>returns a live NodeList</p>
 <p>Doesn't work in IE8 or earlier. Works in all other browsers</p>
@@ -647,6 +699,7 @@ for(var i=0; i&lt;slides.length; i++){
    
 <div class="slide intro"> 
      <header><h1>classList</h1></header> 
+     <section></section>  
  </div> 
   
 <div class="slide normal"> 
@@ -676,11 +729,11 @@ fooCL.<strong>contains</strong>('bar'); // true or false</pre>
 <header><h1>classList</h1></header>
 <section class="content">
         <pre contenteditable>
-var <b>el</b>=d.querySelector('#foo').<b>classList</b>;
-el.<b>add</b>('zap');
-el.<b>remove</b>('bar');
-el.<b>toggle</b>('bar');
-el.<b>contains</b>('bar')); // true or false
+<b>cl</b> = d.querySelector('#foo').<b>classList</b>;
+cl.<b>add</b>('zap');
+cl.<b>remove</b>('bar');
+cl.<b>toggle</b>('bar');
+cl.<b>contains</b>('bar')); // true or false
 var classes = el.toString();
 </pre>
        <ul class="icons" style="clear: both;">
@@ -714,7 +767,8 @@ for(var i = 0; i < foos.length; i++){
 </div> 
   
 <div class="slide intro"> 
-     <header><h1>data- &amp; dataset</h1></header> 
+     <header><h1>data- &amp; dataset</h1></header>  
+     <section></section> 
  </div> 
 
 <div class="slide normal"> 
@@ -739,8 +793,9 @@ for(var i = 0; i < foos.length; i++){
 <section class="content">
 <p>Add attributes to elements in the form of <strong class="textmask">data-name</strong> and  access these through the DOM using <strong class="textmask">dataset[name]</strong> on the element in question.</p>
 <pre contenteditable>&lt;p <strong class="textmask">data-foo-bar="test"</strong>&gt;
-  That's an author defined attribute
+  <span data-foo-bar="test" id="dataset_01">That's an author defined attribute</span>
 &lt;/p></pre>
+<pre contenteditable>el.<strong class="textmask">dataset</strong>[<strong class="textmask">'fooBar'</strong>]</pre>
 <pre contenteditable><strong>&lt;span </strong>
   <strong>class</strong>="link"
   <strong class="textmask">data-usage</strong>="externallink" ...</pre>
@@ -772,13 +827,13 @@ for(var i = 0; i < foos.length; i++){
 <section class="content">
 <p>dataset is a convenience feature for handling the data-* attributes, which are exposed as <strong class="textmask">camel-cased</strong> properties.</p>
  <pre contenteditable>
-elm.dataset.fooBar = 'test' 
+e.dataset.fooBar = 'test' 
 </pre>
 <p>sets the <strong class="textmask">data-foo-bar</strong> content attribute on <strong class="textmask">elm</strong>.
-<pre contenteditable style="font-size: 0.9rem">var lks=d.querySelectorAll('[<strong class="textmask">data-usage</strong>]');
+<pre contenteditable style="font-size: 0.9rem">var links=d.querySelectorAll('[<strong class="textmask">data-usage</strong>]');
 
-for (var i=0; i&lt;lks.length; i++) {
-  if(lks[i].dataset.<strong class="textmask">dataUsage</strong> === "externallink"){
+for (var i=0; i&lt;links.length; i++) {
+  if(links[i].dataset.<strong class="textmask">dataUsage</strong> === "externallink"){
     // set click event as if link clicked
   }
 }
@@ -813,7 +868,7 @@ var currentCard = cardinfo.join('');</pre>
 
         <pre contenteditable style="font-size: 0.95rem">currentCard == 'cardID: 27, row: 3, col: 2'</pre>
         <pre contenteditable style="font-size: 0.95rem">var cardID = info.getAttribute('data-cardID'); //27</pre>
-        <p><small>All browsers support "data-*", but full support of 'dataset started with IE10, FF6, Safari 5.1, Chrome 7, Opera 11.1. Supported in iOS and Android. <a href="http://eligrey.com/blog/post/html-5-dataset-support">Polly fill</a> 
+        <p><small>All browsers support "data-*", but full support of 'dataset started with IE10, FF6, Safari 5.1, Chrome 7, Opera 11.1. Supported in iOS and Android. <a href="http://eligrey.com/blog/post/html-5-dataset-support">Polly fill</a> </small></p>
       </section>
   </div>
   
@@ -834,13 +889,13 @@ var currentCard = cardinfo.join('');</pre>
  
    
 <div class="slide normal"> 
-<header><h1>in General...</h1></header> 
+<header><h1>When it comes to mobile...</h1></header> 
 <section class="content">
 <ul>
-<li class="temphidden">If you can do it in a few lines of code, don't import a library</li>
-<li class="temphidden">Use libraries as tools, not as a crutch.</li>
-<li class="temphidden">Learn to code JS.</li>
-<li class="temphidden">Remember mobile</li>
+<li class="temphidden">99% of mobile visits support addEventListener</li>
+<li class="temphidden">Feature detection is the issue, not code parity</li>
+<li class="temphidden">Memory, latency, CPU usage are major concerns.</li>
+<li class="temphidden">Weigh the pros and cons of including a library... may not be worth it.</li>
 </ul>
 </section>
 </div> 
