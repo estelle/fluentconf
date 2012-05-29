@@ -209,18 +209,17 @@ function setClass(objectID,newClass) {
 <div class="slide normal"> 
      <header><h1>Why frameworks?</h1></header> 
      <section class="content"> 
-     <pre contenteditable style="font-size: 0.8em;">
+     <p style="margin:0">Normalize browser features / code once, works everywhere</p>
+     <pre contenteditable style="font-size: 0.9em;">
 if (el.<strong>addEventListener</strong>) { <span class="half">// W3C</span>
-  el.addEventListener("mouseover",func,false);
-  el.addEventListener("mouseout",func,false);
+  el.addEventListener("click", 
+     func, false);
 } <span class="half">// IE5+, Opera</span>
 else if (el.<strong>attachEvent</strong>) {
-  el.attachEvent ("onmouseover", func);
-  el.attachEvent ("onmouseout", func);
+  el.attachEvent ("click", func);
 } 
 else { <span class="half">// Netscape 4, IE5Mac</span>
-  el.onmouseover = func;
-  el.onmouseout = func;
+  el.<strong>on</strong>click = func;
 } </pre>
 
 <p class="pop">addEventListener supported in IE9 &amp; Opera 7</p>
@@ -375,9 +374,14 @@ from: ajax.googleapis.com/ajax/libs/jquery/1.7.2<br/>
 96.2KB + extra HTTP request</p>
 </section>
 </div> 
- 
+
+
+
 <div class="slide normal" style="background-color: #fff">
-<header><h1>Mobile Matters</h1></header>
+<header>
+	<h1>Mobile Matters</h1>
+</header>
+<section>
 <ul>
 	<li>Minimize Battery usage</li>
     <li>Reduce Latency (fewer HTTP requests)</li>
@@ -386,6 +390,7 @@ from: ajax.googleapis.com/ajax/libs/jquery/1.7.2<br/>
 </ul> 
 <img src="../mobile/images/latency.gif" alt="Latency"/>
 <a href="http://estelle.github.com/mobile/" style="float: right">Mobile Performance presentation</a>
+</section>
  </div>  
 
 
@@ -398,7 +403,9 @@ from: ajax.googleapis.com/ajax/libs/jquery/1.7.2<br/>
 <header><h1 class="textmask">Vanilla JS</h1></header> 
 <section class="content"> 
 	<pre contenteditable style="text-align:center">&lt;script>&lt;/script></pre>
-<p>If possible, make home pages work BEFORE the library needs to be downloaded. - SM</section>
+<p class="temphidden">If possible, make home pages work BEFORE the library needs to be downloaded. - SurveyMonkey</p>
+<p class="temphidden">While you many not support non-JavaScript users, your users are basically non-JS while they're downloading, parsing and executing your JS files</p>
+<p class="temphidden">Get and maintain mad JS skillz.</section>
 </div>   
  
 <div class="slide normal"> 
@@ -598,10 +605,17 @@ console.log(slides.length);
 var foo = document.createElement('div');
 foo.classList.add('slide');
 container.appendChild(foo);
-console.log(slides.length);</pre>
+console.log(slides.length);<button onClick="var container = document.getElementById('slides');
+var slides = container.getElementsByClassName('slide');
+console.log(slides.length);
+var foo = document.createElement('div');
+foo.classList.add('slide');
+container.appendChild(foo);
+console.log(slides.length);">test me</button></pre>
 <ul><li>Live NodeList</li><li>Case-sensitive</li><li>Empty NodeList returns true</li></ul>
 <pre style="font-size:0.9rem" contenteditable>var emptyList = document.getElementsByClassName('zxcv');
-if(emptyList) {console.log('returned true')};</pre>     </section>
+if(emptyList) {alert('returned true')};<button onClick="var emptyList = document.getElementsByClassName('zxcv');
+if(emptyList) {alert('returned true')};">Test Me</button></pre>     </section>
  </div>
 
 <div class="slide normal"><section class="content"> 
@@ -663,7 +677,13 @@ document.querySelectorAll(selector);</pre>
 <pre contenteditable style="font-size:0.75rem">var d = document;
 var s = d.getElementById('slides');
 var EBCN = s.getElementsByClassName('slide');
-var QSA = d.querySelectorAll('#slides .slide');</pre>
+var QSA = d.querySelectorAll('#slides .slide');<button onClick="var d = document;
+console.log(d);
+var s = d.getElementById('slides');
+console.log(s);
+var EBCN = s.getElementsByClassName('slide');
+console.log(EBCN.length);
+var QSA = d.querySelectorAll('#slides .slide'); console.log(QSA.length);">run</button></pre>
 <pre contenteditable style="font-size:0.75rem">console.log('EBCN: ' + EBCN.length);
 console.log('QSA: ' + QSA.length);
 
@@ -672,7 +692,15 @@ foo.classList.add('slide');
 s.appendChild(foo);
 
 console.log('EBCN: ' + EBCN.length);
+console.log('QSA: ' + QSA.length);<button onClick="console.log('EBCN: ' + EBCN.length);
 console.log('QSA: ' + QSA.length);
+
+var foo = document.createElement('div');
+foo.classList.add('slide');
+s.appendChild(foo);
+
+console.log('EBCN: ' + EBCN.length);
+console.log('QSA: ' + QSA.length);">Test Me</button>
 </pre>
 </section>
 </div> 
@@ -905,8 +933,8 @@ var currentCard = cardinfo.join('');</pre>
 <div class="slide normal"> 
 <header><h1>in General...</h1></header> 
 <section class="content">
-<ul><li class="temphidden">If you can do it in a few lines of code, don't import a library</li>
-<li>If you can make the home page work without requiring the library, do it!</li>
+<ul><li>If you can do it in a few lines of code, don't import a library</li>
+<li class="temphidden">If you can make the home page work without requiring the library, do it!</li>
 <li class="temphidden">Use libraries as tools, not as a crutch.</li>
 <li class="temphidden">Learn to code JavaScript not just jQuery.</li>
 <li class="temphidden">Remember mobile</li></ul>

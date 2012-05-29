@@ -214,7 +214,7 @@ width: 800px;
 		box-sizing: border-box;
 		font-family:"Palatino Linotype", "Book Antiqua", Palatino, cursive,serif;
 	 }
-#next, 
+#next, button, 
 #back {
 	z-index: 1000;
 	position: absolute;
@@ -234,6 +234,7 @@ width: 800px;
 	  2px 2px 5px rgba(0,0,0,0.7);
 	border: 3px solid #eee;
 }
+button {position:static;}
 #next {left: auto; right: 5px;}
 /* Content */
 
