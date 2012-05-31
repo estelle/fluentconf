@@ -371,7 +371,7 @@ for (i=0; i&lt;links.length; i++){
 }​</pre>
 <p>jquery.min.js<br/>
 from: ajax.googleapis.com/ajax/libs/jquery/1.7.2<br/>
-96.2KB + extra HTTP request + 4joules to parse jQuery</p>
+96.2KB + HTTP request + 4J + DNS lookup</p>
 </section>
 </div> 
 
@@ -398,11 +398,19 @@ from: ajax.googleapis.com/ajax/libs/jquery/1.7.2<br/>
 <div class="slide object"> 
 <object data="http://www2012.org/proceedings/proceedings/p41.pdf"></object>
      <header><h1>Who Killed My Battery</h1></header> 
-     <p class="temphidden" style="background-color:black;text-align: center; padding: 5px 0; position:absolute; top: 300px; color: white; width: 100%;">Also, 3rd party widgets</p>
      <a href="http://www2012.org/proceedings/proceedings/p41.pdf" class="objectlink">Download PDF</a>
  </div>
 
-
+<div class="slide normal"> 
+     <header><h1>Don't be a SPOF</h1></header> 
+     <section class="content"> 
+     <h1>Single Point of Failure</h1>
+     
+     <p>Don't Add Frameworks in the 3rd party widgets you create!!</p>
+     
+     <p>"<a href="https://github.com/kentbrew/Case-Hardened-JavaScript/blob/master/stub.js">Eight Simple Rules for Running Your JavaScript on My Page</a>" by Kent Brewster</p>
+     </section>
+ </div>
 
 <div class="slide intro"> 
 <header><h1 class="textmask">Vanilla JS</h1></header> 
@@ -434,15 +442,17 @@ from: ajax.googleapis.com/ajax/libs/jquery/1.7.2<br/>
 	<h1>Natively...</h1>
 </header> 
  
-<section style="margin-left:0;"> 
-<pre>var d = document, i, el, EBCN, QSA;
+<section style="margin-left:0;">
+<p>Global Variables for presentation: </p>
+<pre contenteditable>var d = document, i, el, EBCN, QSA;</pre>
+<p>vanilla js</p>
+<pre contenteditable style="margin-right:-40px">
 d.querySelector('li').classList.add('first');
 </pre>
 <p>or simply</p>
 <pre>li:first-of-type {
     /* <strong>.first</strong> declarations */
 }</pre>
-<p class="half temphidden">Note: assume d, el and i are declared for entire deck.</p>
 <p class="half temphidden">Hit 4 for taking notes</p>
 </section>
 </div> 
@@ -459,6 +469,10 @@ d.querySelector('li').classList.add('first');
 <div class="slide normal shrink"> 
 <header><h1>Zebra Tables</h1></header> 
 <section class="content"> 
+<pre class="temphidden" contenteditable>var tr = d.getElementsByTagName('tr');
+for(i=0; i &lt; tr.length; i+=2) {
+	tr[i].setAttribute('class','odd');
+}</pre>
 <pre contenteditable style="float:left">thead tr {
   background-color: #999; 
   color: #fff;
@@ -469,6 +483,7 @@ tbody tr<strong>:nth-of-type(odd)</strong> {
 tbody tr<strong>:nth-of-type(even)</strong> {
   background-color: #ccc;
 }</pre>
+
 <table style="float: right" cellpadding="0" cellspacing="0" border="0">
 <thead><tr><th>First</th><th>Last</th><th>Twitter</th></tr></thead>
 <tbody>
@@ -855,25 +870,6 @@ for(var i = 0; i < foos.length; i++){
 </div> 
 
  
-  
- <div class="slide normal"> 
-<header><h1>dataset</h1></header> 
-<section class="content">
-<p>dataset is a convenience feature for handling the data-* attributes, which are exposed as <strong class="textmask">camel-cased</strong> properties.</p>
- <pre contenteditable>e.dataset.fooBar = 'test'
-e.dataset.usage = 'externallink' </pre>
-<p>sets the <strong class="textmask">data-foo-bar</strong> or <strong class="textmask">data-usage</strong> attribute on <strong class="textmask">e</strong>.</p>
-<pre contenteditable>d.body.dataset.aBC = 'frog';
-
-alert(d.body.getAttribute('data-a-b-c'));
-alert(d.body.dataset['aBC']);
-alert(d.body.dataset.aBC);<button onclick="slideExamples.bodyAttribute()" style="position:relative; top: -30px;">Test</button></pre>
-
-</section>
-</div> 
- 
- 
- 
  <div class="slide normal"> 
 <header><h1>Example</h1></header> 
 <section class="content"> 
@@ -894,7 +890,26 @@ for (var i=0; i&lt;links.length; i++) {
 }
 </pre>
 </section>
+</div>  
+  
+ <div class="slide normal"> 
+<header><h1>dataset</h1></header> 
+<section class="content">
+<p>dataset is a convenience feature for handling the data-* attributes, which are exposed as <strong class="textmask">camel-cased</strong> properties.</p>
+ <pre contenteditable>e.dataset.fooBar = 'test'
+e.dataset.usage = 'externallink' </pre>
+<p>sets the <strong class="textmask">data-foo-bar</strong> or <strong class="textmask">data-usage</strong> attribute on <strong class="textmask">e</strong>.</p>
+<pre contenteditable>d.body.dataset.aBC = 'frog';
+
+alert(d.body.getAttribute('data-a-b-c'));
+alert(d.body.dataset['aBC']);
+alert(d.body.dataset.aBC);<button onclick="slideExamples.bodyAttribute()" style="position:relative; top: -30px;">Test</button></pre>
+
+</section>
 </div> 
+ 
+ 
+
  
   
  
@@ -914,7 +929,7 @@ for (var i=0; i&lt;links.length; i++) {
             deck=[];
 for(var i=0; i &lt; cards.length; i++){
   cardinfo = [];
-  for (var key in cards[i].<b>dataset</b>) {
+  <strong class="textmask">for</strong> (var key <strong class="textmask">in</strong> cards[i].<b>dataset</b>) {
     cardinfo.push(key,': ',cards[i].<b>dataset</b>[key],',');
   }
   var currentCard = cardinfo.join('');
@@ -942,6 +957,7 @@ for(var i=0; i &lt; cards.length; i++){
 <ul>
 <li>Intended for site scripts, not publicly-usable metadata. </li>
 <li>data-name is case insensitive (html), as it converts to lowercase (xhtml)</li>
+<li>In JS, data-name is camelCased. Drop the "data-"</li>
 <li>All browsers can  use data-* attributes, accessing via <strong class="textmask">getAttribute</strong>. </li>
 <li>All browsers <strong class="textmask">EXCEPT IE</strong> support accessing values with <strong class="textmask">dataset</strong> property.</li>
 </ul>
@@ -958,6 +974,7 @@ for(var i=0; i &lt; cards.length; i++){
 <li class="temphidden">99% of mobile visits support addEventListener</li>
 <li class="temphidden">Feature detection is the issue, not code parity</li>
 <li class="temphidden">Memory, latency, CPU usage are major concerns.</li>
+<li class="temphidden"><strong>Again</strong>: JS drains batteries!</li>
 <li class="temphidden">Weigh the pros and cons of including a library... may not be worth it.</li>
 </ul>
 </section>
@@ -969,7 +986,7 @@ for(var i=0; i &lt; cards.length; i++){
 <header><h1>in General...</h1></header> 
 <section class="content">
 <ul><li class="temphidden">If you can do it in a few lines of code, don't import a library</li>
-<li class="temphidden">If you can make the home page work without requiring the library, do it!</li>
+<li class="temphidden">If you can make the home page work without requiring the library, do it! </li>
 <li class="temphidden">Don't import library as part of 3rd party widgets.</li>
 <li class="temphidden">Use libraries as tools, not as a crutch.</li>
 <li class="temphidden">Learn to code JavaScript not just jQuery.</li>
