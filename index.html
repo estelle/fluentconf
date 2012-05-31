@@ -140,7 +140,7 @@ nav li:hover ul {
     <div class="slide intro">
      <header><hgroup> 
       <h1>You don't need <br>a <span class="textmask">framework</span><br> for that</h1> 
-     </hgroup></header>
+     </hgroup></header><p>http://estelle.github.com/fluentconf/</p>
     </div> 
     
     <div class="slide normal"> 
@@ -150,7 +150,7 @@ nav li:hover ul {
 <h2><a href="http://www.standardista.com">www.standardista.com</a></h2>
 <h2><a href="http://www.twitter.com/estellevw">@estellevw</a></h2>
 <h2><a href="http://www.twitter.com/standardista">@standardista</a></h2>
-<div style="float:right"><img src="http://akamaicovers.oreilly.com/images/9780980846904/cat.gif" alt="HTML5 and CSS3 for the Real World"><img src="http://akamaicovers.oreilly.com/images/0636920018063/cat.gif" alt="HTML5: The Definitive Guide" style="margin: 0 20px;"/><img src="http://akamaicovers.oreilly.com/images/0636920021711/cat.gif" alt="MObile HTML5" style="margin: 0 20px;"/><img src="http://akamaicovers.oreilly.com/images/0636920025955/cat.gif" alt="Web Performance Daybook"/></div>
+<div style="float:right"><img src="http://akamaicovers.oreilly.com/images/9780980846904/cat.gif" alt="HTML5 and CSS3 for the Real World"><img src="http://akamaicovers.oreilly.com/images/0636920018063/cat.gif" alt="HTML5: The Definitive Guide" style="margin: 0 20px;"/><img src="http://akamaicovers.oreilly.com/images/0636920021711/cat.gif" alt="MObile HTML5" style="margin: 0 20px;"/><img src="http://akamaicovers.oreilly.com/images/0636920025955/cat.gif" alt="Web Performance Daybook"/><p class="temphidden">All statements are those of my employer, and not necessarily those of the speaker</div>
 </section>
 </div> 
  
@@ -395,7 +395,12 @@ from: ajax.googleapis.com/ajax/libs/jquery/1.7.2<br/>
 
 
 
-
+<div class="slide object"> 
+<object data="http://www2012.org/proceedings/proceedings/p41.pdf"></object>
+     <header><h1>Who Killed My Battery</h1></header> 
+     <p class="temphidden" style="background-color:black;text-align: center; padding: 5px 0; position:absolute; top: 300px; color: white; width: 100%;">Also, 3rd party widgets</p>
+     <a href="http://www2012.org/proceedings/proceedings/p41.pdf" class="objectlink">Download PDF</a>
+ </div>
 
 
 
@@ -408,6 +413,22 @@ from: ajax.googleapis.com/ajax/libs/jquery/1.7.2<br/>
 <p class="temphidden">Get and maintain mad JS skillz.</section>
 </div>   
  
+ 
+   
+<div class="slide intro"> 
+<header>
+<h1>Smackable!</h1></header> 
+<section>
+<pre>&lt;script src="jquery.js"&gt;&lt;/script>
+          
+&lt;script type="text/javascript">                                         
+   $('li:first').addClass('first');     
+&lt;/script>
+</pre>
+</section>
+</div> 
+
+
 <div class="slide normal"> 
 <header>
 	<h1>Natively...</h1>
@@ -419,7 +440,7 @@ d.querySelector('li').classList.add('first');
 </pre>
 <p>or simply</p>
 <pre>li:first-of-type {
-    border-right: none;
+    /* <strong>.first</strong> declarations */
 }</pre>
 <p class="half temphidden">Note: assume d, el and i are declared for entire deck.</p>
 <p class="half temphidden">Hit 4 for taking notes</p>
@@ -572,7 +593,7 @@ nav ul ul {
 
 <div class="slide intro"> 
      <header><h1 style="font-size: 2.75rem;">getElementsByClassName</h1></header>  
-     <section></section> 
+     <section><p class="pop">Supported since IE9</p></section> 
 </div>
 
  
@@ -598,35 +619,29 @@ el.getElementsByClassName('foo');
      <header><h1>Live NodeList</h1></header> 
      <section class="content" style="margin-top: -20px;"> 
 <p class="half">Try the following code in the console</p>   
-<pre style="font-size:0.9rem" contenteditable>
+<pre style="font-size:0.8rem" contenteditable>
 var container = document.getElementById('slides');
 var slides = container.getElementsByClassName('slide');
-console.log(slides.length);
+console.log('1.' + slides.length);<button onClick="slideExamples.doElementByCN1();">Originally</button>
+
 var foo = document.createElement('div');
 foo.classList.add('slide');
 container.appendChild(foo);
-console.log(slides.length);<button onClick="var container = document.getElementById('slides');
-var slides = container.getElementsByClassName('slide');
-console.log(slides.length);
-var foo = document.createElement('div');
-foo.classList.add('slide');
-container.appendChild(foo);
-console.log(slides.length);">test me</button></pre>
+console.log('2.' + slides.length);<button onClick="slideExamples.doElementByCN2(); ">Adding One</button></pre>
 <ul><li>Live NodeList</li><li>Case-sensitive</li><li>Empty NodeList returns true</li></ul>
-<pre style="font-size:0.9rem" contenteditable>var emptyList = document.getElementsByClassName('zxcv');
-if(emptyList) {alert('returned true')};<button onClick="var emptyList = document.getElementsByClassName('zxcv');
-if(emptyList) {alert('returned true')};">Test Me</button></pre>     </section>
+<pre style="font-size:0.8rem" contenteditable>var emptyList = document.getElementsByClassName('zxcv');
+if(emptyList) {alert('returned true')};<button onClick="slideExamples.emptyList()">Test Me</button></pre>     </section>
  </div>
 
 <div class="slide normal"><section class="content"> 
      <h1 style="font-size: 1.8rem">getElementsByClassName(names)</h1>
      
-     <p>The <strong>getElementsByClassName(classNames)</strong> method takes a string that contains an unordered set of unique <strong>space-separated</strong> tokens representing classes. When called, the method must return a <strong><i class="textmask">live</i> NodeList</strong> object containing all the elements in the document, in <strong>tree order</strong>, that have all the classes specified in that argument, having obtained the classes by <strong>splitting a string on spaces</strong>. If there are no tokens specified in the argument, then the method must return an <strong>empty NodeList</strong>. If the document is in quirks mode, then the comparisons for the classes must be done in an ASCII case-insensitive manner, otherwise, the comparisons must be done in a <strong>case-sensitive</strong> manner.<br/> <a href="http://dev.w3.org/html5/spec-LC/dom.html#dom-document-getelementsbyclassname" target="_blank">-- Specification</a>.
-</p></section>    
+     <blockquote><p>The <strong>getElementsByClassName(classNames)</strong> method takes a string that contains an unordered set of unique <strong>space-separated</strong> tokens representing classes. When called, the method must return a <strong><i class="textmask">live</i> NodeList</strong> object containing all the elements in the document, in <strong>tree order</strong>, that have all the classes specified in that argument, having obtained the classes by <strong>splitting a string on spaces</strong>. If there are no tokens specified in the argument, then the method must return an <strong>empty NodeList</strong>. If the document is in quirks mode, then the comparisons for the classes must be done in an ASCII case-insensitive manner, otherwise, the comparisons must be done in a <strong>case-sensitive</strong> manner.</p><cite> <a href="http://dev.w3.org/html5/spec-LC/dom.html#dom-document-getelementsbyclassname" target="_blank">-- Specification</a>.</cite>
+</blockquote></section>    
  </div>
  
  
- <div class="slide normal"> 
+ <!--<div class="slide normal"> 
      <header><h1>getElementsByClassName</h1></header> 
      <section class="content"> 
      <pre contenteditable>d.getElementsByClassName('foo');
@@ -638,7 +653,7 @@ EBCN = el.getElementsByClassName('foo');
 <p>Doesn't work in IE8 or earlier. Works in all other browsers</p>
 <p class="pop">Supported since IE9</p>
 </section>
-</div>
+</div>-->
  <div class="slide intro"> 
      <header><h1>Selectors API</h1></header> 
  </div> 
@@ -650,9 +665,9 @@ EBCN = el.getElementsByClassName('foo');
 <p>Natively</p>
 <pre contenteditable>var el   = document.<strong>querySelector</strong>('#bar');
 
-var chil = el.<strong>querySelectorsAll</strong>('.foo');</pre>
+var chil = el.<strong>querySelectorAll</strong>('.foo');</pre>
 <p>or</p>
-<pre contenteditable>chil = el.<strong>querySelectorsAll</strong>('#bar .foo');</pre>
+<pre contenteditable>chil = d.<strong>querySelectorAll</strong>('#bar .foo');</pre>
 <p class="pop">Supported since IE8</span></p>
 </section>
 </div> 
@@ -660,12 +675,16 @@ var chil = el.<strong>querySelectorsAll</strong>('.foo');</pre>
 <div class="slide normal"> 
 <header><h1>Selectors API</h1></header> 
 <section class="content">
-<p>Enables accessing elements in the DOM with standard CSS selector.</p>
+<p>Access DOM elements with standard CSS selectors.</p>
+<pre contenteditable>elem.querySelector(selector);
+elem.querySelectorAll(selector);</pre>
+<p>Examples</p>
+<pre contenteditable>d.querySelector('#id, li, #slides');
+d.querySelectorAll('li:nth-of-type(odd)');</pre>
 <p class="pop">Supported since IE8</span></p>
-<p>Spec: <a href="http://www.w3.org/TR/selectors-api/">Selectors API level 1</a><br/>
+<p class="half">Spec: 
+<a href="http://www.w3.org/TR/selectors-api/">Selectors API level 1</a> | 
 <a href="http://www.w3.org/TR/selectors-api2/">Selectors API Level 2</a></p> 
-<pre contenteditable>document.querySelector(selector);
-document.querySelectorAll(selector);</pre>
 </section>
 </div> 
  
@@ -674,33 +693,16 @@ document.querySelectorAll(selector);</pre>
 <section class="content"> 
 <pre contenteditable>QSA = d.querySelectorAll('#slides .slide')</pre>
 <p>if you increase # of slides, EBCN increases, QSA does not.</p>
-<pre contenteditable style="font-size:0.75rem">var d = document;
-var s = d.getElementById('slides');
-var EBCN = s.getElementsByClassName('slide');
-var QSA = d.querySelectorAll('#slides .slide');<button onClick="var d = document;
-console.log(d);
-var s = d.getElementById('slides');
-console.log(s);
-var EBCN = s.getElementsByClassName('slide');
-console.log(EBCN.length);
-var QSA = d.querySelectorAll('#slides .slide'); console.log(QSA.length);">run</button></pre>
-<pre contenteditable style="font-size:0.75rem">console.log('EBCN: ' + EBCN.length);
-console.log('QSA: ' + QSA.length);
+<pre contenteditable style="font-size:0.75rem">
+var EBCN = d.getElementsByClassName('slide');
+var QSA  = d.querySelectorAll('.slide');<button onClick="slideExamples.setUpQSA()">run</button></pre>
+<pre contenteditable style="font-size:0.75rem">
+var newSlide = d.createElement('div');
+newSlide.classList.add('slide');
+d.getElementById('slides').appendChild(newSlide);
 
-var foo = document.createElement('div');
-foo.classList.add('slide');
-s.appendChild(foo);
-
-console.log('EBCN: ' + EBCN.length);
-console.log('QSA: ' + QSA.length);<button onClick="console.log('EBCN: ' + EBCN.length);
-console.log('QSA: ' + QSA.length);
-
-var foo = document.createElement('div');
-foo.classList.add('slide');
-s.appendChild(foo);
-
-console.log('EBCN: ' + EBCN.length);
-console.log('QSA: ' + QSA.length);">Test Me</button>
+console.log('Current EBCN: ' + EBCN.length);
+console.log('Current QSA: ' + QSA.length);<button onClick="slideExamples.testQSA()">Test Me</button>
 </pre>
 </section>
 </div> 
@@ -708,15 +710,16 @@ console.log('QSA: ' + QSA.length);">Test Me</button>
   
  <div class="slide normal"> 
 <header><h1>No Native Iteration</h1></header> 
-<section class="content"> 
+<section class="content">
+<p>jQuery</p> 
 <pre contenteditable>
 $('#slides .slide').addClass('current');</pre>
-
+<p>Vanilla.js</p>
 <pre contenteditable>
 var slides = 
    d.querySelectorAll('#slides .slide');
 
-for(var i=0; i&lt;slides.length; i++){
+for(var i=0; i &lt; slides.length; i++){
    slides[i].classList.add('current');
 }</pre>
 
@@ -800,7 +803,7 @@ for(var i = 0; i < foos.length; i++){
  </div> 
 
 <div class="slide normal"> 
-<header><h1>Attribute Abuse</h1></header> 
+<header><h1>Issue solved? Attribute Abuse</h1></header> 
 <section class="content">
 <p>Attribute Abuse</p> 
 <pre contenteditable><strong>&lt;span </strong>
@@ -823,10 +826,8 @@ for(var i = 0; i < foos.length; i++){
 <pre contenteditable>&lt;p <strong class="textmask">data-foo-bar="test"</strong>&gt;
   <span data-foo-bar="test" id="dataset_01">That's an author defined attribute</span>
 &lt;/p></pre>
+<p><strong class="textmask">dataset</strong> property returns a <strong>DOMStringMap</strong> object of element's <strong>data-</strong> attributes</p>
 <pre contenteditable>el.<strong class="textmask">dataset</strong>[<strong class="textmask">'fooBar'</strong>]</pre>
-<pre contenteditable><strong>&lt;span </strong>
-  <strong>class</strong>="link"
-  <strong class="textmask">data-usage</strong>="externallink" ...</pre>
  </section>
 </div> 
 
@@ -854,21 +855,44 @@ for(var i = 0; i < foos.length; i++){
 <header><h1>dataset</h1></header> 
 <section class="content">
 <p>dataset is a convenience feature for handling the data-* attributes, which are exposed as <strong class="textmask">camel-cased</strong> properties.</p>
- <pre contenteditable>
-e.dataset.fooBar = 'test' 
-</pre>
-<p>sets the <strong class="textmask">data-foo-bar</strong> content attribute on <strong class="textmask">elm</strong>.
-<pre contenteditable style="font-size: 0.9rem">var links=d.querySelectorAll('[<strong class="textmask">data-usage</strong>]');
+ <pre contenteditable>e.dataset.fooBar = 'test'
+e.dataset.usage = 'externallink' </pre>
+<p>sets the <strong class="textmask">data-foo-bar</strong> or <strong class="textmask">data-usage</strong> attribute on <strong class="textmask">e</strong>.</p>
+<pre contenteditable>d.body.dataset.aBC = 'frog';
+
+alert(d.body.getAttribute('data-a-b-c'));
+alert(d.body.dataset['aBC']);
+alert(d.body.dataset.aBC);<button onclick="slideExamples.bodyAttribute()" style="position:relative; top: -30px;">Test</button></pre>
+
+</section>
+</div> 
+ 
+ 
+ 
+ <div class="slide normal"> 
+<header><h1>Example</h1></header> 
+<section class="content"> 
+<pre contenteditable style="">links=d.querySelectorAll('[<strong class="textmask">data-usage</strong>]');
 
 for (var i=0; i&lt;links.length; i++) {
-  if(links[i].dataset.<strong class="textmask">dataUsage</strong> === "externallink"){
-    // set click event as if link clicked
+  switch(links[i].dataset.<strong class="textmask">dataUsage</strong>){
+    case "externallink":
+      uptake.createExternalLink(links[i]);
+      break;
+    case "internallink":
+      uptake.createInternalLink(links[i]);
+      break;
+    case "downloadlink":
+      uptake.createDownloadLink(links[i]);
+      break;
   }
 }
 </pre>
 </section>
 </div> 
+ 
   
+ 
 <div class="slide normal">
       <header>
          <h1>data-* attributes
@@ -878,13 +902,19 @@ for (var i=0; i&lt;links.length; i++) {
       <section class="content">
         
          <p class="notes">Define your own DOM manipulable data attributes</p>
-        <pre contenteditable>&lt;div id="card01" <b>data-cardID</b>="27" <b>data-row</b>="3" <b>data-col</b>="2"&gt;&lt;/div&gt;</pre>
-        <pre contenteditable style="font-size: 0.9rem">var info = document.querySelector('#card01');
-var cardinfo = [];
-for (var key in info.<b>dataset</b>) {
-  cardinfo.push(key, ': ', info.<b>dataset</b>[key], ',');
-}
-var currentCard = cardinfo.join('');</pre>
+        <pre contenteditable>&lt;div class="card" <b>data-value</b>="10" 
+ <b>data-suite</b>="3" <b>data-row</b>="3" <b>data-col</b>="2"&gt;&lt;/div&gt;</pre>
+        <pre contenteditable style="font-size: 0.9rem">var cards = document.querySelectorAll('.card'),
+            cardinfo;
+            deck=[];
+for(var i=0; i &lt; cards.length; i++){
+  cardinfo = [];
+  for (var key in cards[i].<b>dataset</b>) {
+    cardinfo.push(key, ': ', cards[i].<b>dataset</b>[key], ',');
+  }
+  var currentCard = cardinfo.join('');
+  deck.push(currentCard);
+}</pre>
 
 </section>
 </div> 
@@ -894,8 +924,8 @@ var currentCard = cardinfo.join('');</pre>
 <section class="content"> 
   
 
-        <pre contenteditable style="font-size: 0.95rem">currentCard == 'cardID: 27, row: 3, col: 2'</pre>
-        <pre contenteditable style="font-size: 0.95rem">var cardID = info.getAttribute('data-cardID'); //27</pre>
+        <pre contenteditable style="font-size: 0.95rem">currentCard == 'value: 10, suite: 3, row: 3, col: 2'</pre>
+        <pre contenteditable style="font-size: 0.95rem">var cardID = info.getAttribute('data-value'); //10</pre>
         <p><small>All browsers support "data-*", but full support of 'dataset started with IE10, FF6, Safari 5.1, Chrome 7, Opera 11.1. Supported in iOS and Android. <a href="http://eligrey.com/blog/post/html-5-dataset-support">Polly fill</a> </small></p>
       </section>
   </div>
@@ -933,8 +963,9 @@ var currentCard = cardinfo.join('');</pre>
 <div class="slide normal"> 
 <header><h1>in General...</h1></header> 
 <section class="content">
-<ul><li>If you can do it in a few lines of code, don't import a library</li>
+<ul><li class="temphidden">If you can do it in a few lines of code, don't import a library</li>
 <li class="temphidden">If you can make the home page work without requiring the library, do it!</li>
+<li class="temphidden">Don't import library as part of 3rd party widgets.</li>
 <li class="temphidden">Use libraries as tools, not as a crutch.</li>
 <li class="temphidden">Learn to code JavaScript not just jQuery.</li>
 <li class="temphidden">Remember mobile</li></ul>
@@ -968,7 +999,60 @@ var currentCard = cardinfo.join('');</pre>
   <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
   <script>CFInstall.check({ mode: "overlay" });</script>
   <![endif]--> 
+<script>
+var slideExamples = {
+	doElementByCN1: function(){
+		slideExamples.container = document.getElementById('slides');
+		slideExamples.slides = slideExamples.container.getElementsByClassName('slide');
+		alert('1. slides.length: ' + slideExamples.slides.length);
+	},
+	doElementByCN2: function(){
+		var foo = document.createElement('div');
+		foo.classList.add('slide');
+		slideExamples.container.appendChild(foo);
+		alert('2. slides.length: ' + slideExamples.slides.length);
+	},
+	emptyList: function(){
+		var emptyList = document.getElementsByClassName('zxcv');
+		if(emptyList) {alert('returned true')};	
+	},
+	setUpQSA: function(){
+		slideExamples.EBCN = document.getElementsByClassName('slide');
+		slideExamples.QSA = document.querySelectorAll('#slides .slide');
+		alert('Original byClassName: ' + slideExamples.EBCN.length + '\n\nOriginal SelectorAll: ' + slideExamples.QSA.length);	
+	},
+	testQSA: function(){
+		var newSlide = document.createElement('div');
+		newSlide.classList.add('slide');
+		document.getElementById('slides').appendChild(newSlide);
 
+alert('Current byClassName: ' + slideExamples.EBCN.length + '\n\nCurrent SelectorAll: ' + slideExamples.QSA.length);
+	},
+	bodyAttribute: function(){
+		document.body.dataset.aBC = 'frog';
+	    alert("getAttribute('data-a-b-c'): " + document.body.getAttribute('data-a-b-c') + 
+			"\n\ndataset['aBC']: " + document.body.dataset['aBC'] + 
+			"\n\ndataset.aBC: " + document.body.dataset.aBC);	
+	}
+ }</script>
+ 
+ <script>
+var links=document.querySelectorAll('[data-usage]');
+
+for (var i=0; i<links.length; i++) {
+  switch(links[i].dataset.dataUsage){
+    case "externallink":
+      uptake.createExternalLink(links[i]);
+      break;
+    case "internallink":
+      uptake.createInternalLink(links[i]);
+      break;
+    case "downloadlink":
+      uptake.createDownloadLink(links[i]);
+      break;
+  }
+}
+ </script>
   </body> 
 
 </html>
