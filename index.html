@@ -371,7 +371,7 @@ for (i=0; i&lt;links.length; i++){
 }​</pre>
 <p>jquery.min.js<br/>
 from: ajax.googleapis.com/ajax/libs/jquery/1.7.2<br/>
-96.2KB + extra HTTP request</p>
+96.2KB + extra HTTP request + 4joules to parse jQuery</p>
 </section>
 </div> 
 
@@ -533,13 +533,13 @@ tbody tr<strong>:nth-of-type(even)</strong> {
   position:relative;
 }
 nav ul ul {
-  transform: scale(1,0); 
+  transform: <strong>scale(1,0)</strong>; 
   transform-origin: top center; 
-  transition: 0.2s linear 50ms; 
+  <strong>transition</strong>: 0.2s linear 50ms; 
   position: absolute; top: 100%;
 }
-nav li:hover ul {
-  transform: scale(1,1);
+nav li<strong>:hover</strong> ul {
+  transform: <strong>scale(1,1)</strong>;
 }</pre>
      </section>
  </div>  
@@ -581,7 +581,9 @@ nav ul ul {
   transform: scale(1,1);
   display: block;
 }</pre>
+
      </section>
+     <header style="position:absolute; top:0; width: 100%;"><h1>Full Browser Support</h1></header>
  </div>
 
 
@@ -656,6 +658,8 @@ EBCN = el.getElementsByClassName('foo');
 </div>-->
  <div class="slide intro"> 
      <header><h1>Selectors API</h1></header> 
+     
+<p class="pop">Supported since IE8</span></p>
  </div> 
  
  <div class="slide normal"> 
@@ -668,7 +672,6 @@ EBCN = el.getElementsByClassName('foo');
 var chil = el.<strong>querySelectorAll</strong>('.foo');</pre>
 <p>or</p>
 <pre contenteditable>chil = d.<strong>querySelectorAll</strong>('#bar .foo');</pre>
-<p class="pop">Supported since IE8</span></p>
 </section>
 </div> 
   
@@ -681,7 +684,6 @@ elem.querySelectorAll(selector);</pre>
 <p>Examples</p>
 <pre contenteditable>d.querySelector('#id, li, #slides');
 d.querySelectorAll('li:nth-of-type(odd)');</pre>
-<p class="pop">Supported since IE8</span></p>
 <p class="half">Spec: 
 <a href="http://www.w3.org/TR/selectors-api/">Selectors API level 1</a> | 
 <a href="http://www.w3.org/TR/selectors-api2/">Selectors API Level 2</a></p> 
@@ -730,7 +732,8 @@ for(var i=0; i &lt; slides.length; i++){
    
 <div class="slide intro"> 
      <header><h1>classList</h1></header> 
-     <section></section>  
+     <section>
+<p class="pop">No Internet Explorer love :(</span></p></section>  
  </div> 
   
 <div class="slide normal"> 
@@ -799,7 +802,9 @@ for(var i = 0; i < foos.length; i++){
   
 <div class="slide intro"> 
      <header><h1>data- &amp; dataset</h1></header>  
-     <section></section> 
+     <section>
+<p class="pop">All Browsers love getAttribute()</span></p>
+<p class="pop">Dataset supported since IE10</span></p></section> 
  </div> 
 
 <div class="slide normal"> 
@@ -902,8 +907,8 @@ for (var i=0; i&lt;links.length; i++) {
       <section class="content">
         
          <p class="notes">Define your own DOM manipulable data attributes</p>
-        <pre contenteditable>&lt;div class="card" <b>data-value</b>="10" 
- <b>data-suite</b>="3" <b>data-row</b>="3" <b>data-col</b>="2"&gt;&lt;/div&gt;</pre>
+        <pre contenteditable>&lt;b class="card" <b>data-value</b>="10" 
+<b>data-suite</b>="3" <b>data-row</b>="3" <b>data-col</b>="2"&gt;&lt;/b&gt;</pre>
         <pre contenteditable style="font-size: 0.9rem">var cards = document.querySelectorAll('.card'),
             cardinfo;
             deck=[];
