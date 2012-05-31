@@ -227,6 +227,10 @@ width: 800px;
 	color: #333;
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
 	background: -webkit-linear-gradient(#fff 50%, #eee 50%, #ddd);
+	background: -moz-linear-gradient(#fff 50%, #eee 50%, #ddd);
+	background: -ms-linear-gradient(#fff 50%, #eee 50%, #ddd);
+	background: -o-linear-gradient(#fff 50%, #eee 50%, #ddd);
+	background: linear-gradient(#fff 50%, #eee 50%, #ddd);
 	border-radius: 7px;
 	border: none;
 	padding: 5px 10px;
@@ -332,7 +336,11 @@ pre em {
 .object object {width: 100%; height: 100%;}
 [contenteditable]:focus {box-shadow:none; outline:1px dashed white;}
 .col2 {
-	-webkit-columns: 2 2em;	
+	-webkit-columns: 2 2em;
+	-moz-columns: 2 2em;
+	-ms-columns: 2 2em;
+	-o-columns: 2 2em;
+	columns: 2 2em;	
 }
 .intro .col2 {
 	margin-top: -10px;
